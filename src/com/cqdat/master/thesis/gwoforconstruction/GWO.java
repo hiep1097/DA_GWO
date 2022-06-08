@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-public class Grey_wolf_optimizer
+public class GWO
 {
     double r1;
     double r2;
@@ -23,7 +23,6 @@ public class Grey_wolf_optimizer
     double X2[][];
     double X3[][];
     double fitness[];
-    double BESTVAL[];
     double iterdep[];
     double a[];
     double A1[];
@@ -36,7 +35,7 @@ public class Grey_wolf_optimizer
     double[][] Result;
     double[][] arrRandomBestVal;
 
-    public Grey_wolf_optimizer(f_xj iff,double iLower[],double iUpper[],int imaxiter,int iN)
+    public GWO(f_xj iff,double iLower[],double iUpper[],int imaxiter,int iN)
     {
         maxiter = imaxiter;
         ff = iff;
@@ -55,7 +54,6 @@ public class Grey_wolf_optimizer
         C2 = new double[D];
         A3 = new double[D];
         C3 = new double[D];
-        BESTVAL = new double[maxiter];
         iterdep = new double[maxiter];
         X1 = new double[N][D];
         X2 = new double[N][D];
@@ -207,9 +205,8 @@ public class Grey_wolf_optimizer
     double[][] solution() throws IOException {
         init();
         int iter = 1;
-        while(iter < maxiter)
+        while(iter <= maxiter)
         {
-            System.out.println("Iteration: "+iter);
             for(int j = 0; j < D; j++) {
                 a[j] = 2.0 -((double)iter * (2.0 / (double)maxiter));
             }
@@ -278,9 +275,9 @@ public class Grey_wolf_optimizer
                 delta[i] = XX[2][i];
             }
 
-            BESTVAL[iter] = ff.func(XX[0]);
-            arrRandomBestVal[iter] = XX[0];
-
+            arrRandomBestVal[iter-1] = XX[0];
+            System.out.println("Iteration: "+iter);
+            System.out.println("Best score: "+ff.func(XX[0]));
             iter++;
         }
 

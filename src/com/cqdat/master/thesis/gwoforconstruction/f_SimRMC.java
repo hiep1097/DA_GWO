@@ -33,7 +33,7 @@ public class f_SimRMC {
 
     public f_SimRMC(){
         try {
-            ReadFile("Data/multiple_station_input.data");
+            ReadFile("Data/input_06072022.data");
         } catch (IOException e) {
             e.printStackTrace();
         }

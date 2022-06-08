@@ -7,18 +7,18 @@ import javafx.scene.chart.XYChart;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Main_GWO {
+public class Main_DA {
 
     public static void main(String[] args) throws IOException {
 
         f_GWO_RMC_CWT ff_cwt = new f_GWO_RMC_CWT();
         f_GWO_RMC_CWT ff_twc = new f_GWO_RMC_TWC();
 
-        int maxiter = 10;
+        int maxiter = 50;
         int N = 30;
 
-        GWO qbpso_cwt = new GWO(ff_cwt, ff_cwt.Lower, ff_cwt.Upper, maxiter, N);
-        GWO qbpso_twc = new GWO(ff_twc, ff_twc.Lower, ff_twc.Upper, maxiter, N);
+        DA qbpso_cwt = new DA(ff_cwt, ff_cwt.Lower, ff_cwt.Upper, maxiter, N);
+        DA qbpso_twc = new DA(ff_twc, ff_twc.Lower, ff_twc.Upper, maxiter, N);
 
         long startTime = System.currentTimeMillis();
 

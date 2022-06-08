@@ -14,7 +14,7 @@ public class Main_DA_GWO {
         f_GWO_RMC_CWT ff_cwt = new f_GWO_RMC_CWT();
         f_GWO_RMC_CWT ff_twc = new f_GWO_RMC_TWC();
 
-        int maxiter = 100;
+        int maxiter = 30;
         int N = 30;
 
         DA_GWO qbpso_cwt = new DA_GWO(ff_cwt, ff_cwt.Lower, ff_cwt.Upper, maxiter, N);
@@ -78,8 +78,6 @@ public class Main_DA_GWO {
         System.out.println("CWT = " + _fSimRMC_TWC.CWT + " - TWC = " + _fSimRMC_TWC.TWC);
         qbpso_twc.toStringNew("Optimized value TWC = ");
 
-
-
         do {
             for (int i = 0; i < lstParetoData.size() - 1; i++) {
                 float cwt_value_i = (float) lstParetoData.get(i).getXValue();
@@ -114,7 +112,7 @@ public class Main_DA_GWO {
                     }
                 }
             }
-        }while(checkFixPareto(lstParetoData) == false);
+        } while(checkFixPareto(lstParetoData) == false);
 
         for(int k = 0; k < 5; k++) {
             int max = 0;
